@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    exercice: exercice1.1
+    app: web
+  name: exo1.1
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: IfNotPresent
+    name: nginx
+  - image: tauffredou/quote-logger
+    imagePullPolicy: IfNotPresent
+    name: quote-logger
