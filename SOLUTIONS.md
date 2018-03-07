@@ -81,7 +81,55 @@ kubectl run exo1dot2 --image tauffredou/quote-logger
 k delete po exo1dot2-67455455bf-d86sw
 ```
 
+**Question** : Quel est l'état du pod cette fois-ci ?
+
+*Réponse* : Le pod est supprimé. En revanche, un autre pod identique au premier
+est créé pour satisfaire les contraintes du deployment (1 réplique)
+
 ## Etape 2 : deployment
+
+### Exercice 1
+
+> Crée un deployment à partir d'un manifest yaml dont les contraintes sont :
+> - déployer 3 répliques
+> - ...d'un pod identique à celui défini à l'étape 1
+
+```
+kubectl apply -f solutions/ex2.1/deployment.yaml
+```
+
+**Question** : combien de pods ont été alloués lors de mon deployment ?
+
+*Réponse* : `kubectl get deploy` (colonne `CURRENT`) / `kubectl get po`
+
+*=> 3 pods*
+
+> Ajoute une réplique au deployment
+
+```
+sed -i 's/replicas: .\*$/replicas: 4/' solutions/ex2.1/deployment.yaml
+kubectl apply -f solutions/ex2.1/deployment.yaml
+```
+
+### Exercice 2
+
+> Retire 2 répliques au deployment via la commande scale
+
+```
+kubectl scale deployment exo2.1 --replicas 2
+```
+
+> Supprime le deployment
+
+```
+kubectl delete deployment exo2.1
+```
+
+**Question** : combien de pod reste-t-il après suppression du deployment ?
+
+*Réponse* : `kubectl get po`
+
+=> 1 pod, celui de l'étape 1, les 2 du deployment ont été supprimés car lié à ce dernier.
 
 ## Etape 3 : service
 
