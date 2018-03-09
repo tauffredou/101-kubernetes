@@ -5,12 +5,17 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Etape 1 : pod](#etape-1--pod)
+- [Préambule](#pr%C3%A9ambule)
+- [Etape 1 : Namespace](#etape-1--namespace)
   - [Exercice 1](#exercice-1)
+- [Etape 2 : pod](#etape-2--pod)
+  - [Exercice 1](#exercice-1-1)
   - [Exercice 2](#exercice-2)
-- [Etape 2 : deployment](#etape-2--deployment)
-- [Etape 3 : service](#etape-3--service)
-- [Etape 4 :](#etape-4-)
+- [Etape 3 : deployment](#etape-3--deployment)
+  - [Exercice 1](#exercice-1-2)
+  - [Exercice 2](#exercice-2-1)
+- [Etape 4 : service](#etape-4--service)
+- [Etape 5 : ingress](#etape-5--ingress)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -18,7 +23,33 @@
 Quelques liens utiles:
 - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
-## Etape 1 : pod
+## Etape 1 : Namespace
+
+### Exercice 1
+
+> Crée ton namespace
+
+```
+kubectl create ns tau
+
+# ou
+
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tau
+EOF
+```
+
+**Question**: Quelles resources sont présentes dans le namespace ?
+
+*Réponse*: le serviceaccount "default". L'important ici est de bien noter l'option `--namespace` qui permet
+de préciser le namespace avec lequel on travaille.
+Il est possible de changer le namespace par défaut en éditant le fichier `~/.kube/config` ou en utilisant un outil 
+comme [kubens](https://github.com/ahmetb/kubectx).
+
+## Etape 2 : pod
 
 ### Exercice 1
 
@@ -86,7 +117,7 @@ k delete po exo1dot2-67455455bf-d86sw
 *Réponse* : Le pod est supprimé. En revanche, un autre pod identique au premier
 est créé pour satisfaire les contraintes du deployment (1 réplique)
 
-## Etape 2 : deployment
+## Etape 3 : deployment
 
 ### Exercice 1
 
@@ -137,8 +168,7 @@ kubectl delete deployment exo2.1
 kubectl delete deployment --all
 ```
 
-## Etape 3 : service
-
+## Etape 4 : service
 
 > Crée un service à partir d'un manifest yaml :
 > - qui cible le port HTTP (TCP/80) et utilise le même port en entrée
@@ -168,6 +198,6 @@ kubectl apply -f solutions/ex2.1/deployment.yaml
 
 Le service a un ensemble d'endpoints sur lequels le trafic peut être routé.
 
-## Etape 4 : ingress
+## Etape 5 : ingress
 
-## Etape 5 : application déploiement Canary
+## Etape 6 : application déploiement Canary
