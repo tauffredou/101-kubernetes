@@ -254,11 +254,15 @@ kubectl apply -f solutions/ex4.2/service-web.yaml
 
 ## Etape 5 : ingress
 
-Hosts:
-- a.xke.com
-- b.xke.com
+# Exercice 1 : host
 
-Paths:
-/a -> service a
-/b -> service b
+> Crée un ingress pour exposer le service web sur le host *<namespace>.xke.techx.fr*.
+
+**Note**: le wildcard *.xke.techx.fr est configuré pour pointer sur l'ingress controller du cluster kubernetes.
+
+# Exercice 2 : path
+
+> Crée un ingress rediriger le path */<ns>* vers le service web sur le host *all.xke.techx.fr.*
+
+
 ## Etape 6 : application déploiement Canary

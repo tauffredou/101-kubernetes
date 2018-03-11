@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: clickcount-path
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: all.xke.techx.fr
+    http:
+      paths:
+      - path: /changeme
+        backend:
+          serviceName: clickcount
+          servicePort: 8080
