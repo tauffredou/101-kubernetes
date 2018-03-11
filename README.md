@@ -159,10 +159,10 @@ le plus adapté pour exposer le composant "web" sur internet ?
 
 ### Exercice 1 : host
 
-> Crée un ingress pour exposer le service web sur le host *<namespace>.xke.techx.fr*.
+> Crée un ingress pour exposer le service web sur le host *NAMESPACE.xke.techx.fr*.
 
 **Note**: le wildcard *.xke.techx.fr est configuré pour pointer sur l'ingress controller du cluster kubernetes.
 
 ### Exercice 2 : path
 
-> Crée un ingress rediriger le path */<ns>* vers le service web sur le host *all.xke.techx.fr.*
+> Crée un ingress rediriger le path */NAMESPACE* vers le service web sur le host *all.xke.techx.fr.*
