@@ -6,6 +6,7 @@
 
 
 - [Préambule](#pr%C3%A9ambule)
+  - [Installation de kubectl](#installation-de-kubectl)
 - [Etape 1 : Namespace](#etape-1--namespace)
   - [Exercice 1](#exercice-1)
 - [Etape 2 : pod](#etape-2--pod)
@@ -22,6 +23,11 @@
 ## Préambule
 Quelques liens utiles:
 - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+- https://www.gitbook.com/book/ramitsurana/awesome-kubernetes/details
+
+### Installation de kubectl
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 ## Etape 1 : Namespace
 
@@ -200,4 +206,11 @@ Le service a un ensemble d'endpoints sur lequels le trafic peut être routé.
 
 ## Etape 5 : ingress
 
+Hosts:
+- a.xke.com
+- b.xke.com
+
+Paths:
+/a -> service a
+/b -> service b
 ## Etape 6 : application déploiement Canary
