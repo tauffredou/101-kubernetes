@@ -148,7 +148,7 @@ La définition d'un service reste requis.
 > Crée un service qui expose le deployment de web en testant les types de services:
 > - LoadBalancer
 > - NodePort
-> - ClusterIp
+> - ClusterIP
 
 **Question**: Sachant que les noeuds du cluster sont dans un réseau privé, quel type de service vous semble
 le plus adapté pour exposer le composant "web" sur internet ?
