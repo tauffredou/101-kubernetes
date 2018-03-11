@@ -5,26 +5,26 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-  - [Préambule](#pr%C3%A9ambule)
-    - [Installation de kubectl](#installation-de-kubectl)
-  - [Etape 1 : Namespace](#etape-1--namespace)
-    - [Exercice 1](#exercice-1)
-    - [Exercice 2](#exercice-2)
-  - [Etape 2 : pod](#etape-2--pod)
-    - [Exercice 1 : création](#exercice-1--cr%C3%A9ation)
-    - [Exercice 2 : interaction](#exercice-2--interaction)
-    - [Exercice 3 : création en ligne de commande](#exercice-3--cr%C3%A9ation-en-ligne-de-commande)
-  - [Etape 3 : deployment](#etape-3--deployment)
-    - [Exercice 1: redis](#exercice-1-redis)
-    - [Exercice 2: web](#exercice-2-web)
-    - [Exercice 3 : cli](#exercice-3--cli)
-  - [Etape 4 : service](#etape-4--service)
-    - [Exercice 1 : redis](#exercice-1--redis)
-    - [Exercice 2 : web](#exercice-2--web)
-  - [Etape 5 : ingress](#etape-5--ingress)
-- [Exercice 1 : host](#exercice-1--host)
-- [Exercice 2 : path](#exercice-2--path)
-  - [Etape 6 : application déploiement Canary](#etape-6--application-d%C3%A9ploiement-canary)
+- [Préambule](#pr%C3%A9ambule)
+  - [Installation de kubectl](#installation-de-kubectl)
+- [Etape 1 : Namespace](#etape-1--namespace)
+  - [Exercice 1](#exercice-1)
+  - [Exercice 2](#exercice-2)
+- [Etape 2 : pod](#etape-2--pod)
+  - [Exercice 1 : création](#exercice-1--cr%C3%A9ation)
+  - [Exercice 2 : interaction](#exercice-2--interaction)
+  - [Exercice 3 : création en ligne de commande](#exercice-3--cr%C3%A9ation-en-ligne-de-commande)
+- [Etape 3 : deployment](#etape-3--deployment)
+  - [Exercice 1: redis](#exercice-1-redis)
+  - [Exercice 2: web](#exercice-2-web)
+  - [Exercice 3 : cli](#exercice-3--cli)
+- [Etape 4 : service](#etape-4--service)
+  - [Exercice 1 : redis](#exercice-1--redis)
+  - [Exercice 2 : web](#exercice-2--web)
+- [Etape 5 : ingress](#etape-5--ingress)
+  - [Exercice 1 : host](#exercice-1--host)
+  - [Exercice 2 : path](#exercice-2--path)
+- [Etape 6 : application déploiement Canary](#etape-6--application-d%C3%A9ploiement-canary)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -258,13 +258,13 @@ kubectl apply -f solutions/ex4.2/service-web.yaml
 
 ## Etape 5 : ingress
 
-# Exercice 1 : host
+### Exercice 1 : host
 
 > Crée un ingress pour exposer le service web sur le host *<namespace>.xke.techx.fr*.
 
 **Note**: le wildcard *.xke.techx.fr est configuré pour pointer sur l'ingress controller du cluster kubernetes.
 
-# Exercice 2 : path
+### Exercice 2 : path
 
 > Crée un ingress rediriger le path */<ns>* vers le service web sur le host *all.xke.techx.fr.*
 
