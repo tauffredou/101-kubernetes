@@ -9,14 +9,16 @@
   - [Installation de kubectl](#installation-de-kubectl)
 - [Etape 1 : Namespace](#etape-1--namespace)
   - [Exercice 1](#exercice-1)
+  - [Exercice 2](#exercice-2)
 - [Etape 2 : pod](#etape-2--pod)
   - [Exercice 1](#exercice-1-1)
-  - [Exercice 2](#exercice-2)
+  - [Exercice 2](#exercice-2-1)
 - [Etape 3 : deployment](#etape-3--deployment)
   - [Exercice 1](#exercice-1-2)
-  - [Exercice 2](#exercice-2-1)
+  - [Exercice 2](#exercice-2-2)
 - [Etape 4 : service](#etape-4--service)
 - [Etape 5 : ingress](#etape-5--ingress)
+- [Etape 6 : application déploiement Canary](#etape-6--application-d%C3%A9ploiement-canary)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
