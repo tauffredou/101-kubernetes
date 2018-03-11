@@ -26,5 +26,5 @@ spec:
           value: redis
         livenessProbe:
           httpGet:
-            path: /healthcheck
+            path: /rest/healthcheck
             port: 8080
