@@ -12,11 +12,12 @@
   - [Exercice 2](#exercice-2)
 - [Etape 2 : pod](#etape-2--pod)
   - [Exercice 1 : création](#exercice-1--cr%C3%A9ation)
-  - [Exercice 2 : les logs](#exercice-2--les-logs)
-  - [Exercice 2](#exercice-2-1)
+  - [Exercice 2 : interaction](#exercice-2--interaction)
+  - [Exercice 3 : création en ligne de commande](#exercice-3--cr%C3%A9ation-en-ligne-de-commande)
 - [Etape 3 : deployment](#etape-3--deployment)
-  - [Exercice 1](#exercice-1-1)
-  - [Exercice 2](#exercice-2-2)
+  - [Exercice 1: redis](#exercice-1-redis)
+  - [Exercice 2: web](#exercice-2-web)
+  - [Exercice 3 : cli](#exercice-3--cli)
 - [Etape 4 : service](#etape-4--service)
 - [Etape 5 : ingress](#etape-5--ingress)
 - [Etape 6 : application déploiement Canary](#etape-6--application-d%C3%A9ploiement-canary)
@@ -93,7 +94,7 @@ kubectl apply -f solutions/ex1.1/pod.yaml
 
 *Réponse*:`kubectl exec exo1.1 -c quote-logger curl localhost`
 
-### Exercice 2 : les logs
+### Exercice 2 : interaction
 
 > Affiche les logs du quote-logger dans le pod
 
@@ -117,7 +118,7 @@ kubectl delete pod exo1.1
 
 *Réponse*: Le pod est complétement supprimé. Il n'est pas relancé. Il n'est pas redémarrable, il n'y pas d'état "stoppé".
 
-### Exercice 2
+### Exercice 3 : création en ligne de commande
 
 Il est possible de démarrer un pod en ligne de commande avec `kubectl run`
 
@@ -144,11 +145,25 @@ est créé pour satisfaire les contraintes du deployment (1 réplique)
 
 ## Etape 3 : deployment
 
-### Exercice 1
+A partir de cette étape, nous allons construire l'application clickcount
 
-> Crée un deployment à partir d'un manifest yaml dont les contraintes sont :
-> - déployer 3 répliques
-> - ...d'un pod identique à celui défini à l'étape 1
+### Exercice 1: redis
+
+> Crée un manifest de deployment du composant "redis" :
+> - image: redis
+> - replicas: 1
+> - le pod contient un "label" nommé "component" de valeur "redis"
+
+### Exercice 2: web
+
+> Crée un manifest de deployment du composant "web" :
+> - image: tauffredou/clickcount
+> - replicas: 3
+> - le pod contient un "label" nommé "component" de valeur "web"
+> - l'adresse du redis est définie par une variable d'environnement nommée REDIS_HOST
+
+**Note**: la valeur de REDIS_HOST peut être devinée dès cette étape mais la définition sera 
+abordée dans l'étape suivante (service)
 
 ```
 kubectl apply -f solutions/ex2.1/deployment.yaml
@@ -160,14 +175,14 @@ kubectl apply -f solutions/ex2.1/deployment.yaml
 
 *=> 3 pods*
 
-> Ajoute une réplique au deployment
+> Réduire le nombre de replicas du composant "web" à 2 instances
 
 ```
-sed -i 's/replicas: .\*$/replicas: 4/' solutions/ex2.1/deployment.yaml
-kubectl apply -f solutions/ex2.1/deployment.yaml
+sed -i 's/replicas: .\*$/replicas: 2/' solutions/ex3.2/deployment-web.yaml
+kubectl apply -f app/ex3.2/deployment-web.yaml
 ```
 
-### Exercice 2
+### Exercice 3 : cli
 
 > Retire 2 répliques au deployment via la commande scale
 

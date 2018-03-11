@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: clickcount
+    component: web
+  name: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: clickcount
+      component: web
+  template:
+    metadata:
+      labels:
+        app: clickcount
+        component: web
+    spec:
+      containers:
+      - image: tauffredou/clickcount
+        imagePullPolicy: Always
+        name: clickcount
+        env:
+        - name: REDIS_HOST
+          value: redis
+        livenessProbe:
+          httpGet:
+            path: /rest/healthcheck
+            port: 8080
