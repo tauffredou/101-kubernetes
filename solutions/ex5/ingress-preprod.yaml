@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: exo5-preprod
+spec:
+  rules:
+  - host: preprod.exo5.minikube.local
+    http:
+      paths:
+      - backend:
+          serviceName: exo5-preprod
+          servicePort: 80

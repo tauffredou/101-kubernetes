@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    exercice: exercice5
+    app: web
+    track: canary
+  name: exo5-canary
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      exercice: exercice5
+      app: web
+      track: canary
+  template:
+    metadata:
+      labels:
+        exercice: exercice5
+        app: web
+        track: canary
+    spec:
+      containers:
+      - image: httpd
+        imagePullPolicy: IfNotPresent
+        name: httpd
+      - image: tauffredou/quote-logger
+        imagePullPolicy: IfNotPresent
+        name: quote-logger

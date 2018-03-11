@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: exo4
+spec:
+  rules:
+  - host: exo4.minikube.local
+    http:
+      paths:
+      - backend:
+          serviceName: exo3
+          servicePort: 80
