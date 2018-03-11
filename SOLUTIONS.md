@@ -55,6 +55,12 @@ de préciser le namespace avec lequel on travaille.
 Il est possible de changer le namespace par défaut en éditant le fichier `~/.kube/config` ou en utilisant un outil 
 comme [kubens](https://github.com/ahmetb/kubectx).
 
+### Exercice 2
+
+> Change de namespace par défaut pour utiliser le tien
+
+```vi ~/.kube/config```
+
 ## Etape 2 : pod
 
 ### Exercice 1
