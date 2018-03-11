@@ -131,11 +131,42 @@ kubectl delete deployment exo2.1
 
 => 1 pod, celui de l'étape 2, les 2 du deployment ont été supprimés car liés à ce dernier.
 
+> Efface tous les déploiements restants.
+
+```
+kubectl delete deployment --all
+```
+
 ## Etape 3 : service
 
+
 > Crée un service à partir d'un manifest yaml :
-> - déployer 3 répliques
-> - ...d'un pod identique à celui défini à l'étape 1
+> - qui cible le port HTTP (TCP/80) et utilise le même port en entrée
+> - ...du déploiement créé précédemment dans l'exercice 2 (exo2.1)
+
+```
+kubectl apply -f solutions/ex3/service.yaml
+```
+
+> Affiche la description du service
+
+```
+kubectl describe service exo3
+```
+
+**Question** : que remarque-t-on ?
+
+*Réponse* :
+- le service crée une adresse Ip (virtuelle)
+- la liste des endpoints est vide (le déploiement avait été supprimé, aucun routage possible !)
+
+> Applique le déploiement précédent (exo2.1) :
+
+```
+kubectl apply -f solutions/ex2.1/deployment.yaml
+```
+
+Le service a un ensemble d'endpoints sur lequels le trafic peut être routé.
 
 ## Etape 4 : ingress
 
