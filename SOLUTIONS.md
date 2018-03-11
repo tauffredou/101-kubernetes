@@ -31,6 +31,14 @@ Quelques liens utiles:
 
 https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
+Déchiffre la configuration de kubectl
+```
+gpg --output kubeconfig --decrypt kubeconfig.enc
+```
+
+Copie la configuration dans ~/.kube/config (à éditer si elle existe déjà)
+
+
 ## Etape 1 : Namespace
 
 ### Exercice 1
@@ -65,7 +73,7 @@ comme [kubens](https://github.com/ahmetb/kubectx).
 
 ## Etape 2 : pod
 
-### Exercice 1
+### Exercice 1 : création
 
 > Crée un pod à partir d'un manifest yaml composé de:
 > - un conteneur nginx
@@ -83,6 +91,8 @@ kubectl apply -f solutions/ex1.1/pod.yaml
 **Question**: Comment joindre le serveur nginx depuis quote-logger ? Depuis un autre pod ?
 
 *Réponse*:`kubectl exec exo1.1 -c quote-logger curl localhost`
+
+### Exercice 2 : les logs
 
 > Affiche les logs du quote-logger dans le pod
 
