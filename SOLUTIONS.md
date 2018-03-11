@@ -210,18 +210,22 @@ kubectl delete deployment --all
 
 ## Etape 4 : service
 
-> Crée un service à partir d'un manifest yaml :
-> - qui cible le port HTTP (TCP/80) et utilise le même port en entrée
-> - ...du déploiement créé précédemment dans l'exercice 2 (exo2.1)
+### Exercice 1 : redis
+
+> Crée un service qui expose le deployment de redis
+
+**Tips pour les plus valeureux**: Il n'y a qu'une seule instance de redis. 
+Il n'est pas nécessaire d'utiliser un loadbalancer pour y accéder. 
+La définition d'un service reste requis.
 
 ```
-kubectl apply -f solutions/ex3/service.yaml
+kubectl apply -f solutions/ex4.1/service-redis.yaml
 ```
 
 > Affiche la description du service
 
 ```
-kubectl describe service exo3
+kubectl describe service redis
 ```
 
 **Question** : que remarque-t-on ?
@@ -230,13 +234,23 @@ kubectl describe service exo3
 - le service crée une adresse Ip (virtuelle)
 - la liste des endpoints est vide (le déploiement avait été supprimé, aucun routage possible !)
 
-> Applique le déploiement précédent (exo2.1) :
+**Question**: Quelle est l'adresse du service au sein du namespace ?
+
+### Exercice 2 : web
+
+> Crée un service qui expose le deployment de web en testant les types de services:
+> - LoadBalancer
+> - NodePort
+> - ClusterIp
+
+**Question**: Sachant que les noeuds du cluster sont dans un réseau privé, quel type de service vous semble
+le plus adapté pour exposer le composant "web" sur internet ?
 
 ```
-kubectl apply -f solutions/ex2.1/deployment.yaml
+kubectl apply -f solutions/ex4.2/service-web.yaml
 ```
 
-Le service a un ensemble d'endpoints sur lequels le trafic peut être routé.
+**Question**: Quelle est l'adresse du service au sein du namespace ?
 
 ## Etape 5 : ingress
 
