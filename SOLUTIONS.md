@@ -37,7 +37,7 @@ Déchiffre la configuration de kubectl
 gpg --output kubeconfig --decrypt kubeconfig.enc
 ```
 
-Copie la configuration dans ~/.kube/config (à éditer si elle existe déjà)
+Copie la configuration de kubeconfig dans ~/.kube/config (à éditer si elle existe déjà)
 
 
 ## Etape 1 : Namespace
