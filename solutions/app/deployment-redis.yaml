@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: clickcount
+    component: redis
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clickcount
+      component: redis
+  template:
+    metadata:
+      labels:
+        app: clickcount
+        component: redis
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: IfNotPresent
+        name: redis

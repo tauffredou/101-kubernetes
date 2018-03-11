@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: clickcount
+spec:
+  rules:
+  - host: changeme.xke.techx.fr
+    http:
+      paths:
+      - backend:
+          serviceName: clickcount
+          servicePort: 8080

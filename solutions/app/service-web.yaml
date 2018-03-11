@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web
+  labels:
+    app: clickcount
+    component: web
+spec:
+  selector:
+    app: clickcount
+    component: web
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
