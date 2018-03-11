@@ -125,12 +125,18 @@ kubectl scale deployment exo2.1 --replicas 2
 kubectl delete deployment exo2.1
 ```
 
-**Question** : combien de pod reste-t-il après suppression du deployment ?
+**Question** : combien de pods reste-t-il après suppression du deployment ?
 
 *Réponse* : `kubectl get po`
 
-=> 1 pod, celui de l'étape 1, les 2 du deployment ont été supprimés car lié à ce dernier.
+=> 1 pod, celui de l'étape 2, les 2 du deployment ont été supprimés car liés à ce dernier.
 
 ## Etape 3 : service
 
+> Crée un service à partir d'un manifest yaml :
+> - déployer 3 répliques
+> - ...d'un pod identique à celui défini à l'étape 1
+
 ## Etape 4 : ingress
+
+## Etape 5 : application déploiement Canary
