@@ -268,5 +268,3 @@ kubectl apply -f solutions/ex4.2/service-web.yaml
 
 > Crée un ingress rediriger le path */<ns>* vers le service web sur le host *all.xke.techx.fr.*
 
-
-## Etape 6 : application déploiement Canary
