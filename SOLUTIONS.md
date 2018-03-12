@@ -77,6 +77,15 @@ comme [kubens](https://github.com/ahmetb/kubectx).
 
 ```vi ~/.kube/config```
 
+```
+contexts:
+- context:
+    cluster: xke.techx.fr
+    user: xke.techx.fr
+    namespace: changeme
+  name: xke.techx.fr
+```
+
 ## Etape 2 : pod
 
 ### Exercice 1 : création
