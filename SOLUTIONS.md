@@ -86,6 +86,8 @@ contexts:
   name: xke.techx.fr
 ```
 
+L'outil https://github.com/ahmetb/kubectx est très pratique pour changer de namespace et de contexte.
+
 ## Etape 2 : pod
 
 ### Exercice 1 : création
