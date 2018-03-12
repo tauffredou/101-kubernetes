@@ -150,7 +150,7 @@ kubectl run exo1dot2 --image tauffredou/quote-logger
 > Supprime le pod précédement créé
 
 ```
-k delete po exo1dot2-67455455bf-d86sw
+kubectl delete po exo1dot2-67455455bf-d86sw
 ```
 
 **Question** : Quel est l'état du pod cette fois-ci ?
