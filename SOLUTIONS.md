@@ -169,6 +169,10 @@ A partir de cette étape, nous allons construire l'application clickcount
 > - replicas: 1
 > - le pod contient un "label" nommé "component" de valeur "redis"
 
+```
+kubectl apply -f solutions/ex2.1/deployment.yaml
+```
+
 ### Exercice 2: web
 
 > Crée un manifest de deployment du composant "web" :
@@ -179,10 +183,6 @@ A partir de cette étape, nous allons construire l'application clickcount
 
 **Note**: la valeur de REDIS_HOST peut être devinée dès cette étape mais la définition sera 
 abordée dans l'étape suivante (service)
-
-```
-kubectl apply -f solutions/ex2.1/deployment.yaml
-```
 
 **Question** : combien de pods ont été alloués lors de mon deployment ?
 
