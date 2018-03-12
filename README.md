@@ -166,3 +166,36 @@ le plus adapté pour exposer le composant "web" sur internet ?
 ### Exercice 2 : path
 
 > Crée un ingress rediriger le path */NAMESPACE* vers le service web sur le host *all.xke.techx.fr.*
+
+
+## Etape 6 : application au déploiement Canary
+
+*...pour les plus téméraires.*
+
+
+L'association Big-l'eux a demandé l'hébergement d'un compteur de clicks pour un événement qui aura lieu dans deux semaines.
+
+> Livre une première version du compteur :
+> - supprime tout ce qui concerne le déploiement web (deployment, service, ingress clickcount) des étapes précédentes, tout en conservant ce qui concerne le redis ;
+> - redéploie la partie web identique à la précédente excepté :
+>  - le deployment utilise un label *track* avec la valeur *stable* et donne vie à 4 répliques,
+>  - le service cible uniquement le deployment avec le label *track* à *stable*.
+
+
+Après quelques essais, l'association est plutôt satisfaite du résultat mais la majorité des utilisateurs ont du mal à distinguer le bouton et les écritures. L'association demande une deuxième version plus contrastée et avec des écritures et bouton plus gros.
+
+Afin de ne pas perturber l'utilisation, nous allons créer un environnement de staging pour valider faire valider nos développements au président de l'association. Un environnement de préproduction sera ensuite implémenté pour un déploiement mixte des 2 versions. L'URL de préproduction sera donnée à un panel des membres qui pourront comparer les 2 versions sans risquer une rupture de service si la 2e version présente des régressions.
+
+> En se basant sur le déploiement de la première version (deployment, service, ingress clickcount), déploie une version de staging :
+> - l'image à utiliser est *clook/clickcount:2*, 2 répliques sont suffisantes ;
+> - le label *track* prend maintenant la valeur *canary* ;
+> - l'ingress utilise l'URL cible *staging.<namespace>.xke.techx.fr*.
+
+
+> Déploie maintenant l'environnement de préproduction qui «mélange» les 2 versions (ratio prod:staging = 2:1).
+
+
+Les membres qui ont utilisé le rang de préproduction et le président de l'association ont donné leur aval pour cette deuxième version et souhaiteraient la voir en production pour tous les membres.
+
+> Déploie la deuxième version en production et supprime les environnements de staging et préproduction.
+

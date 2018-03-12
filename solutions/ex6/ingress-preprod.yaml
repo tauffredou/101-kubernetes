@@ -1,12 +1,12 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: exo5-preprod
+  name: clickcount-preprod
 spec:
   rules:
-  - host: preprod.exo5.minikube.local
+  - host: preprod.changeme.xke.techx.fr
     http:
       paths:
       - backend:
-          serviceName: exo5-preprod
-          servicePort: 80
+          serviceName: clickcount
+          servicePort: 8080

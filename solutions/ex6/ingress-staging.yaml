@@ -1,12 +1,12 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: exo5-staging
+  name: clickcount-staging
 spec:
   rules:
-  - host: staging.exo5.minikube.local
+  - host: staging.changeme.xke.techx.fr
     http:
       paths:
       - backend:
-          serviceName: exo5-staging
-          servicePort: 80
+          serviceName: clickcount
+          servicePort: 8080
