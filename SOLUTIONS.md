@@ -53,6 +53,7 @@ Copie la configuration de kubeconfig dans ~/.kube/config (à éditer si elle exi
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl create ns tau
 ```
@@ -67,17 +68,22 @@ metadata:
   name: tau
 EOF
 ```
+
 </p>
 </details>
+<br />
 
 **Question**: Quelles resources sont présentes dans le namespace ?
 
-<details><summary>**Réponse**</summary>
+<details><summary>Réponse</summary>
 <p>
+
 Le serviceaccount "default". L'important ici est de bien noter l'option `--namespace` qui permet
 de préciser le namespace avec lequel on travaille.
+
 </p>
 </details>
+<br />
 
 Il est possible de changer le namespace par défaut en éditant le fichier `~/.kube/config` ou en utilisant un outil 
 comme [kubens](https://github.com/ahmetb/kubectx).
@@ -88,6 +94,7 @@ comme [kubens](https://github.com/ahmetb/kubectx).
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 vi ~/.kube/config
 ```
@@ -100,8 +107,10 @@ contexts:
     namespace: changeme
   name: xke.techx.fr
 ```
+
 </p>
 </details>
+<br />
 
 L'outil https://github.com/ahmetb/kubectx est très pratique pour changer de namespace et de contexte.
 
@@ -120,27 +129,32 @@ kubectl apply -f solutions/ex1.1/pod.yaml
 ```
 </p>
 </details>
+<br />
+
 **Question**: Quel est l'ip du pod?
 
-<details><summary>*Réponse 1*</summary>
+<details><summary>Réponse 1</summary>
 <p>
 `kubectl get po exo1.1 -o wide`
 </p>
 </details>
+<br />
 
-<details><summary>*Réponse 2*</summary>
+<details><summary>Réponse 2</summary>
 <p>
 `kubectl get po exo1.1 -o jsonpath='{.status.podIP}'` 
 </p>
 </details>
+<br />
 
 **Question**: Comment joindre le serveur nginx depuis quote-logger ? Depuis un autre pod ?
 
-<details><summary>*Réponse*</summary>
+<details><summary>Réponse</summary>
 <p>
 `kubectl exec exo1.1 -c quote-logger curl localhost`
 </p>
 </details>
+<br />
 
 ### Exercice 2 : interaction
 
@@ -153,6 +167,7 @@ kubectl logs exo1.1 -c quote-logger
 ```
 </p>
 </details>
+<br />
 
 > Entre dans le conteneur nginx pour afficher les variables d'environement
 
@@ -163,6 +178,7 @@ kubectl exec exo1.1 -c nginx env
 ```
 </p>
 </details>
+<br />
 
 > Supprime le pod à l'aide de la commande `kubectl delete`
 
@@ -173,14 +189,16 @@ kubectl delete pod exo1.1
 ```
 </p>
 </details>
+<br />
 
 **Question**: Quel est l'état du pod ?
 
-<details><summary>*Réponse*</summary>
+<details><summary>Réponse</summary>
 <p>
 Le pod est complétement supprimé. Il n'est pas relancé. Il n'est pas redémarrable, il n'y pas d'état "stoppé".
 </p>
 </details>
+<br />
 
 ### Exercice 3 : création en ligne de commande
 
@@ -195,14 +213,16 @@ kubectl run exo1dot2 --image tauffredou/quote-logger
 ```
 </p>
 </details>
+<br />
 
 **Question**: Quelles ressouces supplémentaires ont été créées ?
 
-<details><summary>*Réponse*</summary>
+<details><summary>Réponse</summary>
 <p>
 deployment, replicatset
 </p>
 </details>
+<br />
 
 > Supprime le pod précédement créé
 
@@ -213,15 +233,17 @@ kubectl delete po exo1dot2-67455455bf-d86sw
 ```
 </p>
 </details>
+<br />
 
 **Question** : Quel est l'état du pod cette fois-ci ?
 
-<details><summary>*Réponse*</summary>
+<details><summary>Réponse</summary>
 <p>
 Le pod est supprimé. En revanche, un autre pod identique au premier
 est créé pour satisfaire les contraintes du deployment (1 réplique)
 </p>
 </details>
+<br />
 
 ## Etape 3 : deployment
 
@@ -241,6 +263,7 @@ kubectl apply -f solutions/ex2.1/deployment.yaml
 ```
 </p>
 </details>
+<br />
 
 ### Exercice 2: web
 
@@ -255,7 +278,7 @@ abordée dans l'étape suivante (service)
 
 **Question** : combien de pods ont été alloués lors de mon deployment ?
 
-<details><summary>*Réponse*</summary>
+<details><summary>Réponse</summary>
 <p>
 `kubectl get deploy` (colonne `CURRENT`)
 
@@ -264,6 +287,7 @@ ou
 `kubectl get pod`
 </p>
 </details>
+<br />
 
 *=> 3 pods*
 
@@ -277,6 +301,7 @@ kubectl apply -f app/ex3.2/deployment-web.yaml
 ```
 </p>
 </details>
+<br />
 
 ### Exercice 3 : cli
 
@@ -289,6 +314,7 @@ kubectl scale deployment exo2.1 --replicas 2
 ```
 </p>
 </details>
+<br />
 
 > Supprime le deployment
 
@@ -299,6 +325,7 @@ kubectl delete deployment exo2.1
 ```
 </p>
 </details>
+<br />
 
 **Question** : combien de pods reste-t-il après suppression du deployment ?
 
@@ -307,6 +334,7 @@ kubectl delete deployment exo2.1
 `kubectl get po`
 </p>
 </details>
+<br />
 
 => 1 pod, celui de l'étape 2, les 2 du deployment ont été supprimés car liés à ce dernier.
 
@@ -319,6 +347,7 @@ kubectl delete deployment --all
 ```
 </p>
 </details>
+<br />
 
 ## Etape 4 : service
 
@@ -337,6 +366,7 @@ kubectl apply -f solutions/ex4.1/service-redis.yaml
 ```
 </p>
 </details>
+<br />
 
 > Affiche la description du service
 
@@ -347,6 +377,7 @@ kubectl describe service redis
 ```
 </p>
 </details>
+<br />
 
 **Question** : que remarque-t-on ?
 
@@ -356,6 +387,7 @@ kubectl describe service redis
 - la liste des endpoints est vide (le déploiement avait été supprimé, aucun routage possible !)
 </p>
 </details>
+<br />
 
 **Question**: Quelle est l'adresse du service au sein du namespace ?
 
@@ -376,6 +408,7 @@ kubectl apply -f solutions/ex4.2/service-web.yaml
 ```
 </p>
 </details>
+<br />
 
 **Question**: Quelle est l'adresse du service au sein du namespace ?
 
