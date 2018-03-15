@@ -319,11 +319,11 @@ ou
 
 `kubectl get pod`
 
+
+*=> 3 pods*
 </p>
 </details>
 <br />
-
-*=> 3 pods*
 
 > Réduire le nombre de replicas du composant "web" à 2 instances
 
@@ -376,11 +376,11 @@ kubectl delete deployment exo2.1
 kubectl get pod
 ```
 
+=> 1 pod, celui de l'étape 2, les 2 du deployment ont été supprimés car liés à ce dernier.
+
 </p>
 </details>
 <br />
-
-=> 1 pod, celui de l'étape 2, les 2 du deployment ont été supprimés car liés à ce dernier.
 
 > Efface tous les déploiements restants.
 
