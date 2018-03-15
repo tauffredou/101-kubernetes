@@ -90,7 +90,7 @@ comme [kubens](https://github.com/ahmetb/kubectx).
 
 ### Exercice 2
 
-> Change de namespace par défaut pour utiliser le tien
+> Change de namespace par défaut pour utiliser le tiens
 
 <details><summary>Solution</summary>
 <p>
@@ -124,9 +124,11 @@ L'outil https://github.com/ahmetb/kubectx est très pratique pour changer de nam
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl apply -f solutions/ex1.1/pod.yaml
 ```
+
 </p>
 </details>
 <br />
@@ -135,14 +137,22 @@ kubectl apply -f solutions/ex1.1/pod.yaml
 
 <details><summary>Réponse 1</summary>
 <p>
-`kubectl get po exo1.1 -o wide`
+
+```
+kubectl get po exo1.1 -o wide
+```
+
 </p>
 </details>
 <br />
 
 <details><summary>Réponse 2</summary>
 <p>
-`kubectl get po exo1.1 -o jsonpath='{.status.podIP}'` 
+
+```
+kubectl get po exo1.1 -o jsonpath='{.status.podIP}'
+```
+
 </p>
 </details>
 <br />
@@ -151,7 +161,11 @@ kubectl apply -f solutions/ex1.1/pod.yaml
 
 <details><summary>Réponse</summary>
 <p>
-`kubectl exec exo1.1 -c quote-logger curl localhost`
+
+```
+kubectl exec exo1.1 -c quote-logger curl localhost
+```
+
 </p>
 </details>
 <br />
@@ -162,9 +176,11 @@ kubectl apply -f solutions/ex1.1/pod.yaml
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl logs exo1.1 -c quote-logger
 ```
+
 </p>
 </details>
 <br />
@@ -173,9 +189,11 @@ kubectl logs exo1.1 -c quote-logger
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl exec exo1.1 -c nginx env
 ```
+
 </p>
 </details>
 <br />
@@ -184,9 +202,11 @@ kubectl exec exo1.1 -c nginx env
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl delete pod exo1.1
 ```
+
 </p>
 </details>
 <br />
@@ -195,7 +215,9 @@ kubectl delete pod exo1.1
 
 <details><summary>Réponse</summary>
 <p>
+
 Le pod est complétement supprimé. Il n'est pas relancé. Il n'est pas redémarrable, il n'y pas d'état "stoppé".
+
 </p>
 </details>
 <br />
@@ -208,9 +230,11 @@ Il est possible de démarrer un pod en ligne de commande avec `kubectl run`
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl run exo1dot2 --image tauffredou/quote-logger
 ```
+
 </p>
 </details>
 <br />
@@ -219,7 +243,9 @@ kubectl run exo1dot2 --image tauffredou/quote-logger
 
 <details><summary>Réponse</summary>
 <p>
+
 deployment, replicatset
+
 </p>
 </details>
 <br />
@@ -228,9 +254,11 @@ deployment, replicatset
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl delete po exo1dot2-67455455bf-d86sw
 ```
+
 </p>
 </details>
 <br />
@@ -239,8 +267,10 @@ kubectl delete po exo1dot2-67455455bf-d86sw
 
 <details><summary>Réponse</summary>
 <p>
+
 Le pod est supprimé. En revanche, un autre pod identique au premier
 est créé pour satisfaire les contraintes du deployment (1 réplique)
+
 </p>
 </details>
 <br />
@@ -258,9 +288,11 @@ A partir de cette étape, nous allons construire l'application clickcount
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl apply -f solutions/ex2.1/deployment.yaml
 ```
+
 </p>
 </details>
 <br />
@@ -280,11 +312,13 @@ abordée dans l'étape suivante (service)
 
 <details><summary>Réponse</summary>
 <p>
+
 `kubectl get deploy` (colonne `CURRENT`)
 
 ou
 
 `kubectl get pod`
+
 </p>
 </details>
 <br />
@@ -295,10 +329,12 @@ ou
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 sed -i 's/replicas: .\*$/replicas: 2/' solutions/ex3.2/deployment-web.yaml
 kubectl apply -f app/ex3.2/deployment-web.yaml
 ```
+
 </p>
 </details>
 <br />
@@ -309,9 +345,11 @@ kubectl apply -f app/ex3.2/deployment-web.yaml
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl scale deployment exo2.1 --replicas 2
 ```
+
 </p>
 </details>
 <br />
@@ -320,9 +358,11 @@ kubectl scale deployment exo2.1 --replicas 2
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl delete deployment exo2.1
 ```
+
 </p>
 </details>
 <br />
@@ -331,7 +371,11 @@ kubectl delete deployment exo2.1
 
 <details><summary>Réponse</summary>
 <p>
-`kubectl get po`
+
+```
+kubectl get pod
+```
+
 </p>
 </details>
 <br />
@@ -342,9 +386,11 @@ kubectl delete deployment exo2.1
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl delete deployment --all
 ```
+
 </p>
 </details>
 <br />
@@ -361,9 +407,11 @@ La définition d'un service reste requis.
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl apply -f solutions/ex4.1/service-redis.yaml
 ```
+
 </p>
 </details>
 <br />
@@ -372,9 +420,11 @@ kubectl apply -f solutions/ex4.1/service-redis.yaml
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl describe service redis
 ```
+
 </p>
 </details>
 <br />
@@ -383,8 +433,10 @@ kubectl describe service redis
 
 <details><summary>Réponse</summary>
 <p>
+
 - le service crée une adresse Ip (virtuelle)
 - la liste des endpoints est vide (le déploiement avait été supprimé, aucun routage possible !)
+
 </p>
 </details>
 <br />
@@ -403,9 +455,11 @@ le plus adapté pour exposer le composant "web" sur internet ?
 
 <details><summary>Solution</summary>
 <p>
+
 ```
 kubectl apply -f solutions/ex4.2/service-web.yaml
 ```
+
 </p>
 </details>
 <br />
