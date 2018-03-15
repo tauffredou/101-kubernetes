@@ -51,11 +51,15 @@ Copie la configuration de kubeconfig dans ~/.kube/config (à éditer si elle exi
 
 > Crée ton namespace
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl create ns tau
+```
 
-# ou
+ou
 
+```
 cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Namespace
@@ -63,11 +67,18 @@ metadata:
   name: tau
 EOF
 ```
+</p>
+</details>
 
 **Question**: Quelles resources sont présentes dans le namespace ?
 
-*Réponse*: le serviceaccount "default". L'important ici est de bien noter l'option `--namespace` qui permet
+<details><summary>**Réponse**</summary>
+<p>
+Le serviceaccount "default". L'important ici est de bien noter l'option `--namespace` qui permet
 de préciser le namespace avec lequel on travaille.
+</p>
+</details>
+
 Il est possible de changer le namespace par défaut en éditant le fichier `~/.kube/config` ou en utilisant un outil 
 comme [kubens](https://github.com/ahmetb/kubectx).
 
@@ -75,7 +86,11 @@ comme [kubens](https://github.com/ahmetb/kubectx).
 
 > Change de namespace par défaut pour utiliser le tien
 
-```vi ~/.kube/config```
+<details><summary>Solution</summary>
+<p>
+```
+vi ~/.kube/config
+```
 
 ```
 contexts:
@@ -85,6 +100,8 @@ contexts:
     namespace: changeme
   name: xke.techx.fr
 ```
+</p>
+</details>
 
 L'outil https://github.com/ahmetb/kubectx est très pratique pour changer de namespace et de contexte.
 
@@ -96,42 +113,74 @@ L'outil https://github.com/ahmetb/kubectx est très pratique pour changer de nam
 > - un conteneur nginx
 > - un conteneur tauffredou/quote-logger
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl apply -f solutions/ex1.1/pod.yaml
 ```
+</p>
+</details>
 **Question**: Quel est l'ip du pod?
 
-*Réponse 1*: `kubectl get po exo1.1 -o wide`
+<details><summary>*Réponse 1*</summary>
+<p>
+`kubectl get po exo1.1 -o wide`
+</p>
+</details>
 
-*Réponse 2*: `kubectl get po exo1.1 -o jsonpath='{.status.podIP}'` 
+<details><summary>*Réponse 2*</summary>
+<p>
+`kubectl get po exo1.1 -o jsonpath='{.status.podIP}'` 
+</p>
+</details>
 
 **Question**: Comment joindre le serveur nginx depuis quote-logger ? Depuis un autre pod ?
 
-*Réponse*:`kubectl exec exo1.1 -c quote-logger curl localhost`
+<details><summary>*Réponse*</summary>
+<p>
+`kubectl exec exo1.1 -c quote-logger curl localhost`
+</p>
+</details>
 
 ### Exercice 2 : interaction
 
 > Affiche les logs du quote-logger dans le pod
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl logs exo1.1 -c quote-logger
 ```
+</p>
+</details>
 
 > Entre dans le conteneur nginx pour afficher les variables d'environement
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl exec exo1.1 -c nginx env
 ```
+</p>
+</details>
 
 > Supprime le pod à l'aide de la commande `kubectl delete`
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl delete pod exo1.1
 ```
+</p>
+</details>
 
 **Question**: Quel est l'état du pod ?
 
-*Réponse*: Le pod est complétement supprimé. Il n'est pas relancé. Il n'est pas redémarrable, il n'y pas d'état "stoppé".
+<details><summary>*Réponse*</summary>
+<p>
+Le pod est complétement supprimé. Il n'est pas relancé. Il n'est pas redémarrable, il n'y pas d'état "stoppé".
+</p>
+</details>
 
 ### Exercice 3 : création en ligne de commande
 
@@ -139,24 +188,40 @@ Il est possible de démarrer un pod en ligne de commande avec `kubectl run`
 
 > Démarre un conteneur quote-logger en ligne de commande
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl run exo1dot2 --image tauffredou/quote-logger
 ```
+</p>
+</details>
 
 **Question**: Quelles ressouces supplémentaires ont été créées ?
 
-*Réponse*: deployment, replicatset
+<details><summary>*Réponse*</summary>
+<p>
+deployment, replicatset
+</p>
+</details>
 
 > Supprime le pod précédement créé
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl delete po exo1dot2-67455455bf-d86sw
 ```
+</p>
+</details>
 
 **Question** : Quel est l'état du pod cette fois-ci ?
 
-*Réponse* : Le pod est supprimé. En revanche, un autre pod identique au premier
+<details><summary>*Réponse*</summary>
+<p>
+Le pod est supprimé. En revanche, un autre pod identique au premier
 est créé pour satisfaire les contraintes du deployment (1 réplique)
+</p>
+</details>
 
 ## Etape 3 : deployment
 
@@ -169,9 +234,13 @@ A partir de cette étape, nous allons construire l'application clickcount
 > - replicas: 1
 > - le pod contient un "label" nommé "component" de valeur "redis"
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl apply -f solutions/ex2.1/deployment.yaml
 ```
+</p>
+</details>
 
 ### Exercice 2: web
 
@@ -186,42 +255,70 @@ abordée dans l'étape suivante (service)
 
 **Question** : combien de pods ont été alloués lors de mon deployment ?
 
-*Réponse* : `kubectl get deploy` (colonne `CURRENT`) / `kubectl get po`
+<details><summary>*Réponse*</summary>
+<p>
+`kubectl get deploy` (colonne `CURRENT`)
+
+ou
+
+`kubectl get pod`
+</p>
+</details>
 
 *=> 3 pods*
 
 > Réduire le nombre de replicas du composant "web" à 2 instances
 
+<details><summary>Solution</summary>
+<p>
 ```
 sed -i 's/replicas: .\*$/replicas: 2/' solutions/ex3.2/deployment-web.yaml
 kubectl apply -f app/ex3.2/deployment-web.yaml
 ```
+</p>
+</details>
 
 ### Exercice 3 : cli
 
 > Retire 2 répliques au deployment via la commande scale
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl scale deployment exo2.1 --replicas 2
 ```
+</p>
+</details>
 
 > Supprime le deployment
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl delete deployment exo2.1
 ```
+</p>
+</details>
 
 **Question** : combien de pods reste-t-il après suppression du deployment ?
 
-*Réponse* : `kubectl get po`
+<details><summary>Réponse</summary>
+<p>
+`kubectl get po`
+</p>
+</details>
 
 => 1 pod, celui de l'étape 2, les 2 du deployment ont été supprimés car liés à ce dernier.
 
 > Efface tous les déploiements restants.
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl delete deployment --all
 ```
+</p>
+</details>
 
 ## Etape 4 : service
 
@@ -233,21 +330,32 @@ kubectl delete deployment --all
 Il n'est pas nécessaire d'utiliser un loadbalancer pour y accéder. 
 La définition d'un service reste requis.
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl apply -f solutions/ex4.1/service-redis.yaml
 ```
+</p>
+</details>
 
 > Affiche la description du service
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl describe service redis
 ```
+</p>
+</details>
 
 **Question** : que remarque-t-on ?
 
-*Réponse* :
+<details><summary>Réponse</summary>
+<p>
 - le service crée une adresse Ip (virtuelle)
 - la liste des endpoints est vide (le déploiement avait été supprimé, aucun routage possible !)
+</p>
+</details>
 
 **Question**: Quelle est l'adresse du service au sein du namespace ?
 
@@ -261,9 +369,13 @@ kubectl describe service redis
 **Question**: Sachant que les noeuds du cluster sont dans un réseau privé, quel type de service vous semble
 le plus adapté pour exposer le composant "web" sur internet ?
 
+<details><summary>Solution</summary>
+<p>
 ```
 kubectl apply -f solutions/ex4.2/service-web.yaml
 ```
+</p>
+</details>
 
 **Question**: Quelle est l'adresse du service au sein du namespace ?
 
