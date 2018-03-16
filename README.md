@@ -95,7 +95,8 @@ comme [kubens](https://github.com/ahmetb/kubectx).
 
 > Change de namespace par défaut pour utiliser le tiens
 
-<details><summary>Solution</summary>
+
+<details><summary>Solution 1</summary>
 <p>
 
 ```
@@ -109,6 +110,17 @@ contexts:
     user: xke.techx.fr
     namespace: changeme
   name: xke.techx.fr
+```
+
+</p>
+</details>
+<br />
+
+<details><summary>Solution 2</summary>
+<p>
+
+```
+kubectl config set-context $(kubectl config current-context) --namespace=changeme
 ```
 
 </p>
