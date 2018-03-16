@@ -305,7 +305,7 @@ A partir de cette étape, nous allons construire l'application clickcount
 <p>
 
 ```
-kubectl apply -f solutions/ex2.1/deployment.yaml
+kubectl apply -f solutions/ex3.1/deployment.yaml
 ```
 
 </p>
