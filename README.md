@@ -369,47 +369,6 @@ kubectl scale deployment web --replicas 2
 </details>
 <br />
 
-> Supprime le deployment
-
-<details><summary>Solution</summary>
-<p>
-
-```
-kubectl delete deployment web
-```
-
-</p>
-</details>
-<br />
-
-**Question** : combien de pods reste-t-il après suppression du deployment ?
-
-<details><summary>Réponse</summary>
-<p>
-
-```
-kubectl get pod
-```
-
-=> 1 pod, celui de l'étape 2, les 2 du deployment ont été supprimés car liés à ce dernier.
-
-</p>
-</details>
-<br />
-
-> Efface tous les déploiements restants.
-
-<details><summary>Solution</summary>
-<p>
-
-```
-kubectl delete deployment --all
-```
-
-</p>
-</details>
-<br />
-
 ## Etape 4 : service
 
 ### Exercice 1 : redis
