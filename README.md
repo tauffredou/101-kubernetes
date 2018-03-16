@@ -362,7 +362,7 @@ kubectl apply -f app/ex3.2/deployment-web.yaml
 <p>
 
 ```
-kubectl scale deployment exo2.1 --replicas 2
+kubectl scale deployment web --replicas 2
 ```
 
 </p>
@@ -375,7 +375,7 @@ kubectl scale deployment exo2.1 --replicas 2
 <p>
 
 ```
-kubectl delete deployment exo2.1
+kubectl delete deployment web
 ```
 
 </p>
