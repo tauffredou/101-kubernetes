@@ -460,11 +460,30 @@ le plus adapté pour exposer le composant "web" sur internet ?
 kubectl apply -f solutions/ex4.2/service-web.yaml
 ```
 
+=> utilisation de ClusterIp (option par défaut) et d'un ingress à l'étape suivante
+
 </p>
 </details>
 <br />
 
-**Question**: Quelle est l'adresse du service au sein du namespace ?
+**Question**: Quelle est l'adresse du service au sein du cluster ?
+
+<details><summary>Réponse</summary>
+<p>
+
+```
+kubectl get service web
+```
+
+ou
+
+```
+kubectl describe service web
+```
+
+</p>
+</details>
+<br />
 
 ## Etape 5 : ingress
 
@@ -474,7 +493,29 @@ kubectl apply -f solutions/ex4.2/service-web.yaml
 
 **Note**: le wildcard *.xke.techx.fr est configuré pour pointer sur l'ingress controller du cluster kubernetes.
 
+<details><summary>Solution</summary>
+<p>
+
+```
+kubectl apply -f solutions/ex5.1/ingress.yaml
+```
+
+</p>
+</details>
+<br />
+
+
 ### Exercice 2 : path
 
 > Crée un ingress rediriger le path */<ns>* vers le service web sur le host *all.xke.techx.fr.*
 
+<details><summary>Solution</summary>
+<p>
+
+```
+kubectl apply -f solutions/ex5.2/ingress-path.yaml
+```
+
+</p>
+</details>
+<br />
