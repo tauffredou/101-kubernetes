@@ -24,7 +24,6 @@
 - [Etape 5 : ingress](#etape-5--ingress)
   - [Exercice 1 : host](#exercice-1--host)
   - [Exercice 2 : path](#exercice-2--path)
-- [Etape 6 : application déploiement Canary](#etape-6--application-d%C3%A9ploiement-canary)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
