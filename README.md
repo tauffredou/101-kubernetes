@@ -303,9 +303,9 @@ kubectl apply -f solutions/ex2.1/deployment.yaml
 > - image: tauffredou/clickcount
 > - replicas: 3
 > - le pod contient un "label" nommé "component" de valeur "web"
-> - l'adresse du redis est définie par une variable d'environnement nommée REDIS_HOST
+> - l'adresse du redis est définie par une variable d'environnement nommée REDIS\_HOST
 
-**Note**: la valeur de REDIS_HOST peut être devinée dès cette étape mais la définition sera 
+**Note**: la valeur de REDIS\_HOST peut être devinée dès cette étape mais la définition sera 
 abordée dans l'étape suivante (service)
 
 **Question** : combien de pods ont été alloués lors de mon deployment ?
@@ -491,7 +491,7 @@ kubectl describe service web
 
 > Crée un ingress pour exposer le service web sur le host *<namespace>.xke.techx.fr*.
 
-**Note**: le wildcard *.xke.techx.fr est configuré pour pointer sur l'ingress controller du cluster kubernetes.
+**Note**: le wildcard \*.xke.techx.fr est configuré pour pointer sur l'ingress controller du cluster kubernetes.
 
 <details><summary>Solution</summary>
 <p>
