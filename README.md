@@ -77,6 +77,10 @@ EOF
 <details><summary>Réponse</summary>
 <p>
 
+```
+kubectl get serviceaccount --namespace tau
+```
+
 Le serviceaccount "default". L'important ici est de bien noter l'option `--namespace` qui permet
 de préciser le namespace avec lequel on travaille.
 
